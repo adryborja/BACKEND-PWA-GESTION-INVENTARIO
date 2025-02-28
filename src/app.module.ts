@@ -21,9 +21,9 @@ import { ReporteModule } from './reporte/reporte.module';
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
-      port: 5433,
+      port: 5432,
       username: 'postgres',
-      password: '1995',
+      password: 'admin',
       database: 'control-inventario',
       //entities: [Rol],
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
