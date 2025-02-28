@@ -16,15 +16,21 @@ export class PedidoService {
     }
 
     async obtenerPedido(id: number): Promise<Pedido> {
-        const pedido = await this.pedidoRepository.findOne({ where: { id } });
+        const pedido = await this.pedidoRepository.findOne({
+            where: { id },
+        });
+
         if (!pedido) {
             throw new NotFoundException(`Pedido con ID ${id} no encontrado`);
         }
+
         return pedido;
     }
 
     async obtenerTodosPedidos(): Promise<Pedido[]> {
-        return await this.pedidoRepository.find();
+        return await this.pedidoRepository.find({
+            relations: ["empresa"], // ✅ Se mantiene por si necesitas en otro contexto
+        });
     }
 
     async actualizarPedido(id: number, pedidoData: Partial<Pedido>): Promise<Pedido> {
@@ -37,3 +43,4 @@ export class PedidoService {
         await this.pedidoRepository.remove(pedido);
     }
 }
+

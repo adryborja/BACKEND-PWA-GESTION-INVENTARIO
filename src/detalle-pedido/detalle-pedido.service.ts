@@ -16,15 +16,21 @@ export class DetallePedidoService {
     }
 
     async obtenerDetallePedido(id: number): Promise<DetallePedido> {
-        const detallePedido = await this.detallePedidoRepository.findOne({ where: { id } });
+        const detallePedido = await this.detallePedidoRepository.findOne({
+            where: { id },
+        });
+
         if (!detallePedido) {
             throw new NotFoundException(`Detalle de pedido con ID ${id} no encontrado`);
         }
+
         return detallePedido;
     }
 
     async obtenerTodosDetallesPedido(): Promise<DetallePedido[]> {
-        return await this.detallePedidoRepository.find();
+        return await this.detallePedidoRepository.find({
+            relations: ["pedido", "producto"], // ✅ Se mantiene por si lo necesitas en otro contexto
+        });
     }
 
     async actualizarDetallePedido(id: number, detallePedidoData: Partial<DetallePedido>): Promise<DetallePedido> {

@@ -6,14 +6,15 @@ export enum EstadoPedido {
     ENTREGADO = "Entregado",
     CANCELADO = "Cancelado"
 } 
+
 @Entity({ name: 'pedido' })
 export class Pedido {
 
     @PrimaryGeneratedColumn({ name: 'id_pedido' })
     id: number;
 
-    @ManyToOne(() => Empresa, { nullable: false, onDelete: "CASCADE" })
-    empresa: Empresa;
+    @ManyToOne(() => Empresa, { nullable: false, onDelete: "CASCADE", eager: true })
+    empresa: Empresa; // ✅ Agregamos `eager: true` para cargar automáticamente la relación
 
     @CreateDateColumn({ name: 'fecha_solicitud' })
     fecha_solicitud: Date;

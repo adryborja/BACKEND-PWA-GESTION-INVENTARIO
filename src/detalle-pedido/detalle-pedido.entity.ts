@@ -8,11 +8,11 @@ export class DetallePedido {
     @PrimaryGeneratedColumn({ name: 'id_detalle_pedido' })
     id: number;
 
-    @ManyToOne(() => Pedido, { nullable: false, onDelete: "CASCADE" })
-    pedido: Pedido;
+    @ManyToOne(() => Pedido, { nullable: false, onDelete: "CASCADE", eager: true })
+    pedido: Pedido; // ✅ Se cargará automáticamente en las consultas
 
-    @ManyToOne(() => Producto, { nullable: false, onDelete: "CASCADE" })
-    producto: Producto;
+    @ManyToOne(() => Producto, { nullable: false, onDelete: "CASCADE", eager: true })
+    producto: Producto; // ✅ Se cargará automáticamente en las consultas
 
     @Column({ type: "int" })
     cantidad: number;
