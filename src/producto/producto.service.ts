@@ -18,7 +18,7 @@ export class ProductoService {
     async obtenerProducto(id: number): Promise<Producto> {
         const producto = await this.productoRepository.findOne({
             where: { id },
-            relations: ["categoria", "empresa", "proveedor"], // ✅ Incluir relaciones
+            relations: ["categoria", "empresa", "proveedor"], 
         });
     
         if (!producto) {
@@ -30,7 +30,7 @@ export class ProductoService {
     
     async obtenerTodosProductos(): Promise<Producto[]> {
         return await this.productoRepository.find({
-            relations: ["categoria", "empresa", "proveedor"], // ✅ Incluir relaciones
+            relations: ["categoria", "empresa", "proveedor"], 
         });
     }
 

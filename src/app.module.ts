@@ -25,7 +25,7 @@ import { ReporteModule } from './reporte/reporte.module';
       username: 'postgres',
       password: 'admin',
       database: 'control-inventario',
-      //entities: [Rol],
+    
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true
     }),

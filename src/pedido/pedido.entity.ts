@@ -14,7 +14,7 @@ export class Pedido {
     id: number;
 
     @ManyToOne(() => Empresa, { nullable: false, onDelete: "CASCADE", eager: true })
-    empresa: Empresa; // ✅ Agregamos `eager: true` para cargar automáticamente la relación
+    empresa: Empresa; 
 
     @CreateDateColumn({ name: 'fecha_solicitud' })
     fecha_solicitud: Date;

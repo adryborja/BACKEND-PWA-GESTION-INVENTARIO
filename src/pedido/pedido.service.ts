@@ -29,7 +29,7 @@ export class PedidoService {
 
     async obtenerTodosPedidos(): Promise<Pedido[]> {
         return await this.pedidoRepository.find({
-            relations: ["empresa"], // ✅ Se mantiene por si necesitas en otro contexto
+            relations: ["empresa"], 
         });
     }
 
