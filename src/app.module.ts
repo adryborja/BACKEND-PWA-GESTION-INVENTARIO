@@ -17,7 +17,7 @@ import { DetallePedidoModule } from './detalle-pedido/detalle-pedido.module';
 import { ReporteModule } from './reporte/reporte.module';
 
 @Module({
-  imports: [
+  imports: [ 
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
